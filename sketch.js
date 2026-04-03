@@ -7,36 +7,42 @@ const exampleImages = [
   {
     src: "images/rottweiler.jpg",
     expectedLabel: "rottweiler",
+    displayLabel: "Rottweiler",
     title: "Beispiel 1",
     p5img: null
   },
   {
     src: "images/tiger.jpg",
     expectedLabel: "tiger",
+    displayLabel: "Tiger",
     title: "Beispiel 2",
     p5img: null
   },
   {
     src: "images/orca.jpg",
     expectedLabel: "orca",
+    displayLabel: "Orka",
     title: "Beispiel 3",
     p5img: null
   },
   {
     src: "images/golden_retriever.jpg",
     expectedLabel: "golden retriever",
+    displayLabel: "Golden Retriever",
     title: "Beispiel 4",
     p5img: null
   },
     {
     src: "images/Tree Swallow.jpg",
     expectedLabel: "tree swallow",
+    displayLabel: "Sumpfschwalbe",
     title: "Beispiel 5",
     p5img: null
   },
   {
     src: "images/hawk.jpg",
-    expectedLabel: "hawk",
+    expectedLabel: "red-tailed hawk",
+    displayLabel: "Rotschwanzbussard",
     title: "Beispiel 6",
     p5img: null
   },
@@ -73,7 +79,7 @@ function renderExampleCards() {
         <div class="image-box">
           <img id="example-img-${i}" src="${item.src}" alt="${item.title}">
           <div class="meta">
-            <div><strong>Erwartete Klasse:</strong> ${item.expectedLabel}</div>
+            <div><strong>Erwartete Klasse:</strong> ${item.displayLabel}</div>
             <div><strong>Vorhersage:</strong> <span id="prediction-${i}">Ergebnis wird berechnet...</span></div>
             <div><strong>Status:</strong> <span id="status-${i}">Wird geprüft...</span></div>
           </div>
@@ -149,7 +155,7 @@ function createChart(canvasId, results) {
     data: {
       labels: labels,
       datasets: [{
-        label: "Confidence in %",
+        label: "Wahrscheinlichkeit in %",
         data: values,
         borderWidth: 1
       }]
@@ -305,7 +311,7 @@ async function renderUserImageResult() {
   const classifyButton = document.getElementById("classifyButton");
 
   classifyButton.disabled = true;
-  classifyButton.textContent = "Classifying...";
+  classifyButton.textContent = "Bild wird klassifiziert...";
 
   setUploadMessage("Bild wird klassifiziert ...", "info");
 
@@ -332,7 +338,7 @@ async function renderUserImageResult() {
   }
 
   classifyButton.disabled = false;
-  classifyButton.textContent = "Classify";
+  classifyButton.textContent = "Bild klassifizieren";
 }
 
 function resetUserUploadState() {

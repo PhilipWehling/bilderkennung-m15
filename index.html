@@ -36,7 +36,7 @@
               accept="image/png, image/jpeg, image/webp"
             />
             <p class="help-text">Erlaubte Formate: JPG, PNG, WEBP</p>
-            <button id="classifyButton" disabled>Classify</button>
+            <button id="classifyButton" disabled>Bild klassifizieren</button>
             
             <p id="uploadMessage" class="upload-message">Noch kein Bild ausgewählt.</p>
           </div>
@@ -48,15 +48,73 @@
 
       <section>
         <h2>Diskussion</h2>
-        <p id="discussionText">
-          Hier kommt später deine Diskussion hin.
-        </p>
+         <div id="discussionText">
+          <p>Anhand der gewählten Beispielbilder lässt sich erkennen, unter welchen Bedingungen das Modell zuverlässige Klassifikationsergebnisse liefert. Bilder mit klar erkennbaren Objekten, vollständiger Darstellung und eindeutigen Merkmalen werden in der Regel korrekt klassifiziert. Dies betrifft insbesondere Tiere oder Objekte, die in typischer Perspektive und ohne störende Hintergrundelemente dargestellt sind.
+          </p>
+
+          <p>Im Gegensatz dazu treten Fehlklassifikationen vor allem bei unscharfen Bildern, ungewöhnlichen Perspektiven oder bei Objekten mit ähnlichen visuellen Merkmalen auf. Insbesondere Klassen mit vielen ähnlichen Unterarten können vom Modell schwer unterschieden werden.
+          </p>
+
+          <p>Zudem zeigt sich, dass die ausgegebene Confidence nicht immer eine verlässliche Aussage über die tatsächliche Korrektheit der Klassifikation darstellt. Auch bei relativ hohen Confidence-Werten können Fehlklassifikationen auftreten, wie in Beispiel 6 zu sehen ist.
+          </p>
+
+          <p>Ein weiterer Einflussfaktor ist die Trainingsbasis des verwendeten Modells. Da MobileNet auf dem ImageNet-Datensatz trainiert wurde, ist die Erkennungsleistung stark von den dort enthaltenen Klassen und Bildtypen abhängig. Dadurch kann es zu Einschränkungen bei weniger typischen oder abweichenden Bildern kommen.
+          </p>
+        </div>
       </section>
 
       <section>
         <h2>Dokumentation</h2>
         <div id="documentationText">
-          <p>Hier kommt später die technische und fachliche Dokumentation hin.</p>
+          <h3>Technische Dokumentation</h3>
+          <ul>
+            <li>
+              <strong>ml5.js:</strong> Wird zur Bildklassifikation verwendet. Es nutzt ein vortrainiertes MobileNet-Modell und ermöglicht die Klassifikation direkt im Browser ohne eigenes Training.
+            </li>
+            <li>
+              <strong>Chart.js:</strong> Dient zur Visualisierung der Klassifikationsergebnisse. Die Confidence-Werte werden als Balkendiagramm dargestellt.
+            </li>
+            <li>
+              <strong>chartjs-plugin-datalabels:</strong> Ergänzt Chart.js, um die Prozentwerte direkt auf den Balken anzuzeigen.
+            </li>
+            <li>
+              <strong>p5.js:</strong> Wird zum Laden und Verarbeiten von Bildern verwendet, insbesondere über die Funktion <code>loadImage()</code>.
+            </li>
+          </ul>
+
+          <p><strong>Besonderheiten:</strong></p>
+          <ul>
+            <li>Für jedes Bild werden dynamisch Diagramme mit den Top-3 Vorhersagen erzeugt.</li>
+            <li>Fehlerhafte Eingaben werden erkannt und der Zustand der Anwendung wird zurückgesetzt.</li>
+            <li>Das ml5-Backend wurde auf CPU gesetzt, um Kompatibilitätsprobleme zu vermeiden.</li>
+          </ul>
+          <h3>Fachliche Dokumentation</h3>
+          <p>Die Anwendung basiert auf dem vortrainierten Modell <strong>MobileNet</strong>, das über ml5.js eingebunden wird. Ziel war es, Bilder direkt im Browser zu klassifizieren, ohne ein eigenes Modell trainieren zu müssen.
+          </p>
+
+          <p>Für jedes Bild werden die Top-3 Vorhersagen des Modells mit zugehörigen Confidence-Werten berechnet und als Balkendiagramm visualisiert. Die Beispielbilder wurden gezielt so ausgewählt, dass sowohl korrekte als auch fehlerhafte Klassifikationen dargestellt werden.
+          </p>
+
+          <p>Zusätzlich kann der Nutzer eigene Bilder per Upload oder Drag-and-drop klassifizieren. Die Verarbeitung erfolgt vollständig clientseitig im Browser.
+          </p>
+
+          <p>Die Ergebnisse zeigen, dass das Modell bei klaren und typischen Motiven zuverlässig arbeitet, während bei ähnlichen Klassen oder unklaren Bildern häufiger Fehlklassifikationen auftreten. Die Confidence-Werte dienen dabei als Hinweis, stellen jedoch keine Garantie für die Korrektheit dar.
+          </p>
+
+          <p>Bei der Gestaltung wurde auf eine klare visuelle Struktur und semantische Farbgebung geachtet. Korrekte Klassifikationen werden durch grüne Farbakzente, falsche durch rote hervorgehoben. Zusätzlich wurde zur besseren Unterscheidbarkeit eine dezente Hintergrundfarbanpassung der Karten verwendet.
+          </p>
+          
+          <p>Zur Verbesserung der Verständlichkeit wurde die Benutzeroberfläche sprachlich vereinheitlicht und auf Deutsch umgesetzt. Die vom Modell ausgegebenen Klassenbezeichnungen bleiben jedoch unverändert, da diese direkt aus dem vortrainierten Modell stammen und nicht beeinflusst werden können. Für den Vergleich mit den Modellvorhersagen werden englische Labels verwendet, während in der Benutzeroberfläche deutsche Bezeichnungen angezeigt werden. Eine automatische Übersetzung wurde bewusst nicht implementiert, um potenzielle Fehler zu vermeiden.
+          </p>
+
+          <p>Zur Verbesserung der Benutzerfreundlichkeit wurden interaktive Elemente integriert. Dazu zählen Hover-Effekte auf den Ergebniskarten sowie visuelles Feedback beim Drag-and-drop-Bereich, um dem Nutzer Rückmeldung über mögliche Interaktionen zu geben.
+          </p>
+
+          <p>Darüber hinaus erhält der Nutzer während der Nutzung kontinuierliches Feedback, beispielsweise beim Laden und Klassifizieren von Bildern sowie bei fehlerhaften Eingaben. Dadurch wird eine verständliche und nachvollziehbare Interaktion gewährleistet.
+          </p>
+          
+          <p>Die verwendeten Beispielbilder wurden über die Google-Bildersuche recherchiert und gezielt ausgewählt, um sowohl korrekte als auch fehlerhafte Klassifikationen zu demonstrieren.
+          </p>
         </div>
       </section>
     </main>
