@@ -1,0 +1,144 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  margin: 20px;
+}
+
+section {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Karten */
+.result-card {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #f9f9f9;
+}
+
+.result-card.correct {
+  border-left: 8px solid #2e7d32;
+  background: #f1f8f4;
+}
+
+.result-card.wrong {
+  border-left: 8px solid #c62828;
+  background: #fdf2f2;
+}
+
+/* Layout */
+.result-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.result-card:hover {
+  transform: scale(1.01);
+  transition: 0.2s;
+}
+
+/* Bilder */
+.image-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Meta Infos */
+.meta {
+  margin-top: 12px;
+}
+
+/* Upload Bereich */
+#uploadSection {
+  margin-top: 20px;
+}
+
+/* Drag & Drop */
+#dropZone {
+  border: 2px dashed #999;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+#dropZone.dragover {
+  border-color: #1976d2;
+  background: #e3f2fd;
+  cursor: copy;
+}
+
+#dropZone:hover {
+  border-color: #1976d2;
+}
+
+#dropZone p {
+  margin: 10px 0;
+  color: #555;
+}
+
+/* File Input */
+#fileInput {
+  margin-top: 10px;
+}
+
+/* Button */
+#classifyButton {
+  margin-top: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#classifyButton:hover {
+  background-color: #125ea8;
+}
+
+#classifyButton:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Hilfe */
+.help-text {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Upload Status */
+.upload-message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+.upload-message.success {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.upload-message.error {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.upload-message.info {
+  color: #1565c0;
+  font-weight: 600;
+}

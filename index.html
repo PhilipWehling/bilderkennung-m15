@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.12/lib/p5.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Bildklassifikation mit ml5</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Bildklassifikation mit ml5.js (MobileNet)</h1>
+
+      <section>
+        <h2>Richtig klassifiziert</h2>
+        <div id="correctContainer"></div>
+
+        <h2>Falsch klassifiziert</h2>
+        <div id="wrongContainer"></div>
+      </section>
+
+      <section>
+        <h2>Eigenes Bild hochladen</h2>
+        <div id="uploadSection">
+          <div id="dropZone">
+            <p>Bild per Drag-and-drop hineinziehen oder Datei auswählen.</p>
+            <input
+              type="file"
+              id="fileInput"
+              accept="image/png, image/jpeg, image/webp"
+            />
+            <p class="help-text">Erlaubte Formate: JPG, PNG, WEBP</p>
+            <button id="classifyButton" disabled>Classify</button>
+            
+            <p id="uploadMessage" class="upload-message">Noch kein Bild ausgewählt.</p>
+          </div>
+          
+
+          <div id="userResultContainer"></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Diskussion</h2>
+        <p id="discussionText">
+          Hier kommt später deine Diskussion hin.
+        </p>
+      </section>
+
+      <section>
+        <h2>Dokumentation</h2>
+        <div id="documentationText">
+          <p>Hier kommt später die technische und fachliche Dokumentation hin.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
